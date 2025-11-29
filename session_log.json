@@ -1,0 +1,34 @@
+{
+  "session_id": "b01a28f5-3ce8-4b4e-9214-28c6c23feaab",
+  "candidate_id": "hacker_007",
+  "started_at": 1764438140.9011567,
+  "events": [
+    {
+      "ts": 0.0,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4.01,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 10.01,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    }
+  ],
+  "ended_at": 1764438155.9194896,
+  "summary": {
+    "hard_score": 100,
+    "soft_score": 0,
+    "verdict": "PASS"
+  }
+}
