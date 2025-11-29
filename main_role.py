@@ -69,6 +69,12 @@ def main():
     hard_score = monitor.calculate_hard_score()
     print(f"\nHard Score Calculated: {hard_score}")
     
+    # Display keyboard activity stats
+    kb_stats = monitor.get_keyboard_stats()
+    print(f"\n[Keyboard Activity]")
+    print(f"  Inactive periods (7+s): {kb_stats['inactive_periods']}")
+    print(f"  Total inactive time: {kb_stats['total_inactive_time']}s ({kb_stats['inactive_percentage']}%)")
+    
     # calculate soft score
     final_soft_score = int(sum(soft_scores) / len(soft_scores)) if soft_scores else 0
     print(f"Soft Score Calculated: {final_soft_score}")
