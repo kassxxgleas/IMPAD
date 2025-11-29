@@ -1,4 +1,41 @@
 {
+  "session_id": "678c6c16-0a6d-4dd2-a798-e24a721359b7",
+  "candidate_id": "dev_01",
+  "started_at": 1764435655.642693,
+  "events": [
+    {
+      "ts": 0.0,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 0.11,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 0.21,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 85,
+        "terminology": 90,
+        "completeness": 60,
+        "comment": "Candidate correctly identified the O(n) constraint."
+      }
+    }
+  ],
+  "ended_at": 1764435655.850943,
+  "summary": {
+    "hard_score": 75,
+    "soft_score": 80,
+    "verdict": "PASS"
+  }
+}
+{
   "session_id": "b01a28f5-3ce8-4b4e-9214-28c6c23feaab",
   "candidate_id": "hacker_007",
   "started_at": 1764438140.9011567,

@@ -34,7 +34,10 @@ class SessionLogger:
             candidate_id=candidate_id,
             started_at=time.time()
         )
+<<<<<<< HEAD
         # Initial save to create the file
+=======
+>>>>>>> 413bfa5f3f53dc034b429dbda6814e2ffb4ec889
         self._flush()
 
     def _flush(self):
@@ -44,7 +47,11 @@ class SessionLogger:
             json.dump(asdict(self.data), f, indent=2)
 
     def log_state(self, state: str):
+<<<<<<< HEAD
         """Called by Role 3 (Window Monitor)"""
+=======
+        """Called for window monitoring"""
+>>>>>>> 413bfa5f3f53dc034b429dbda6814e2ffb4ec889
         with self.lock:
             ts = time.time() - self.data.started_at
             event = Event(ts=round(ts, 2), type="STATE", payload={"state": state})
@@ -52,7 +59,11 @@ class SessionLogger:
             self._flush()
 
     def log_clarity(self, clarity_data: dict):
+<<<<<<< HEAD
         """Called by Role 2 (LLM Engine)"""
+=======
+        """Called for clarity analysis"""
+>>>>>>> 413bfa5f3f53dc034b429dbda6814e2ffb4ec889
         with self.lock:
             ts = time.time() - self.data.started_at
             event = Event(ts=round(ts, 2), type="CLARITY", payload=clarity_data)
@@ -68,6 +79,7 @@ class SessionLogger:
                 "soft_score": soft_score,
                 "verdict": verdict
             }
+<<<<<<< HEAD
             self._flush()
 
 # --- DEMO / MOCK GENERATOR (Run this immediately for Role 4) ---
@@ -89,3 +101,6 @@ if __name__ == "__main__":
     
     logger.finish_session(hard_score=75, soft_score=80, verdict="PASS")
     print(f"Done. File saved to {logger.filepath}")
+=======
+            self._flush()
+>>>>>>> 413bfa5f3f53dc034b429dbda6814e2ffb4ec889
