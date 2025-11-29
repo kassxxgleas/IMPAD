@@ -53,7 +53,8 @@ STRICT RULES:
 - Be strict on technical accuracy. "Correct code" without logical explanation scores low.
 - Round to nearest 5 for consistency (0, 5, 10, 15, ..., 100).
 - Comment should be 1-2 sentences: ONE key strength + ONE area for improvement.
-- If explanation is too short (<20 words), rate all as 0 and comment "Insufficient explanation".
+- If explanation is very short (<3 words) or meaningless, rate as 0.
+- For short but valid thoughts (e.g. "I am fixing the bug"), rate based on clarity and intent. Do NOT auto-fail short inputs.
 
 Now analyze the explanation provided."""
 

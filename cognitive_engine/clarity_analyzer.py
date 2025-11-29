@@ -122,8 +122,8 @@ class ClarityAnalyzer:
             
             content = data["choices"][0]["message"]["content"]
             
-            if DEBUG:
-                print(f"[DEBUG] Raw API response: {content}")
+            # if DEBUG:
+            #     print(f"[DEBUG] Raw API response: {content}")
             
             # Parse JSON
             try:

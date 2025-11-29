@@ -6,7 +6,14 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+from pathlib import Path
+env_path = Path(__file__).parent.parent / '.env'
+print(f"DEBUG: Loading .env from {env_path}")
+load_dotenv(dotenv_path=env_path)
+
+# Check if key is loaded
+key = os.getenv("OPENAI_API_KEY")
+print(f"DEBUG: OPENAI_API_KEY found: {bool(key)}")
 
 # Режим роботи: "fake" або "real"
 LLM_MODE = os.getenv("LLM_MODE", "fake")

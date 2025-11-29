@@ -1,70 +1,39 @@
 {
-  "session_id": "678c6c16-0a6d-4dd2-a798-e24a721359b7",
-  "candidate_id": "dev_01",
-  "started_at": 1764435655.642693,
+  "session_id": "4e9b8dd3-848e-437c-a44f-0cd1b04b2ad6",
+  "candidate_id": "hacker_007",
+  "started_at": 1764455957.2385898,
   "events": [
     {
       "ts": 0.0,
-      "type": "STATE",
-      "payload": {
-        "state": "RESEARCHING"
-      }
-    },
-    {
-      "ts": 0.11,
       "type": "STATE",
       "payload": {
         "state": "CODING"
       }
     },
     {
-      "ts": 0.21,
+      "ts": 26.01,
       "type": "CLARITY",
       "payload": {
-        "coherence": 85,
-        "terminology": 90,
-        "completeness": 60,
-        "comment": "Candidate correctly identified the O(n) constraint."
-      }
-    }
-  ],
-  "ended_at": 1764435655.850943,
-  "summary": {
-    "hard_score": 75,
-    "soft_score": 80,
-    "verdict": "PASS"
-  }
-}
-{
-  "session_id": "b01a28f5-3ce8-4b4e-9214-28c6c23feaab",
-  "candidate_id": "hacker_007",
-  "started_at": 1764438140.9011567,
-  "events": [
-    {
-      "ts": 0.0,
-      "type": "STATE",
-      "payload": {
-        "state": "CODING"
+        "coherence": 10,
+        "terminology": 10,
+        "completeness": 5,
+        "comment": "Terminology is lacking. Incoherent explanation."
       }
     },
     {
-      "ts": 4.01,
-      "type": "STATE",
+      "ts": 35.9,
+      "type": "FINAL_ANALYSIS",
       "payload": {
-        "state": "RESEARCHING"
-      }
-    },
-    {
-      "ts": 10.01,
-      "type": "STATE",
-      "payload": {
-        "state": "CODING"
+        "coherence": 10,
+        "terminology": 10,
+        "completeness": 5,
+        "comment": "Terminology is lacking. Area for improvement: Provide more context and details for better understanding."
       }
     }
   ],
-  "ended_at": 1764438155.9194896,
+  "ended_at": 1764455993.1372387,
   "summary": {
-    "hard_score": 100,
+    "hard_score": 80,
     "soft_score": 0,
     "verdict": "PASS"
   }

@@ -61,6 +61,14 @@ class SessionLogger:
             event = Event(ts=round(ts, 2), type="CLARITY", payload=clarity_data)
             self.data.events.append(event)
             self._flush()
+
+    def log_event(self, event_type: str, payload: dict):
+        """Generic event logger"""
+        with self.lock:
+            ts = time.time() - self.data.started_at
+            event = Event(ts=round(ts, 2), type=event_type, payload=payload)
+            self.data.events.append(event)
+            self._flush()
     
     def finish_session(self, hard_score: int, soft_score: int, verdict: str):
         """Finalize the logs"""
