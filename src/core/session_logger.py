@@ -83,26 +83,11 @@ class SessionLogger:
             }
             self._flush()
 
+    def update_candidate_id(self, new_id: str):
+        """Update the candidate ID and save to file"""
+        with self.lock:
+            self.data.candidate_id = new_id
+            self._flush()
 
-# --- DEMO / MOCK GENERATOR (Run this immediately for Role 4) ---
-if __name__ == "__main__":
-    print("Generating mock session_log.json...")
-    logger = SessionLogger(candidate_id="dev_01")
-    
-    # Simulate time passing
-    logger.log_state("RESEARCHING")
-    time.sleep(0.1)
-    
-    logger.log_state("CODING")
-    time.sleep(0.1)
-    
-    logger.log_clarity({
-        "coherence": 85,
-        "terminology": 90,
-        "completeness": 60,
-        "comment": "Candidate correctly identified the O(n) constraint."
-    })
-    
-    logger.finish_session(hard_score=75, soft_score=80, verdict="PASS")
-    
-    print(f"Done. File saved to {logger.filepath}")
+
+
