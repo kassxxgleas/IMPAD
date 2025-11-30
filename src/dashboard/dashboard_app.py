@@ -22,6 +22,8 @@ import sys
 # Ensure src modules can be imported
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from src.core.leaderboard import Leaderboard
+from src.core.leaderboard import Leaderboard
+from src.certificates import generator as certificate_generator
 
 
 # =========================
@@ -710,6 +712,57 @@ def render_results_view():
         st.subheader("🤖 AI Analysis")
         st.success(f"**Feedback:** {final_comment}")
         
+        st.divider()
+
+        # Certificate Generation
+        st.subheader("🎓 Certificate & Proof")
+        
+        verdict = data["summary"].get("verdict", "PENDING")
+        
+        if verdict == "PASS":
+            if st.button("📜 Generate Certificate & Mint Proof"):
+                with st.spinner("Generating certificate and proof..."):
+                    try:
+                        # 1. Generate PDF
+                        # Ensure data has necessary fields for generate_proof
+                        # generate_proof expects 'candidate_id' and 'summary' in data
+                        if "candidate_id" not in data:
+                            data["candidate_id"] = candidate_name
+                        
+                        pdf_filename = certificate_generator.generate_pdf(data, filename=f"certificate_{data.get('session_id', 'unknown')}.pdf")
+                        
+                        # 2. Upload to Pinata
+                        ipfs_hash = certificate_generator.upload_to_pinata(pdf_filename)
+                        
+                        # 3. Sign Voucher
+                        signature = certificate_generator.sign_voucher(ipfs_hash, data.get('session_id'))
+                        
+                        if signature:
+                            st.success("Certificate generated and proof minted successfully!")
+                            st.markdown(f"**IPFS Hash:** `{ipfs_hash}`")
+                            st.markdown(f"**Signature:** `{signature}`")
+                            st.markdown(f"[View Certificate PDF](https://gateway.pinata.cloud/ipfs/{ipfs_hash})")
+                            
+                            # Save mint data
+                            mint_data = {
+                                "session_id": str(data.get('session_id')),
+                                "ipfs_hash": ipfs_hash,
+                                "signature": signature,
+                                "pdf_url": f"https://gateway.pinata.cloud/ipfs/{ipfs_hash}"
+                            }
+                            
+                            output_path = os.path.join("data", "certificates", "mint_data.json")
+                            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                            with open(output_path, "w") as f:
+                                json.dump(mint_data, f, indent=4)
+                        else:
+                            st.error("Failed to sign voucher. Check admin private key.")
+                            
+                    except Exception as e:
+                        st.error(f"Error generating certificate: {e}")
+        else:
+            st.warning("⚠️ Certificate generation is only available for candidates with a PASS verdict. Unfortunately, the score threshold was not met.")
+
         st.divider()
         
         if st.button("🔙 Back to Dashboard"):
