@@ -18,7 +18,7 @@ class ActiveWindowMonitor:
         }
         # type of activities
         self.keywords = {
-            "CODING": ["code", "pycharm", "visual studio", "sublime", "vim", ".py", "main.py", "vscode"],
+            "CODING": ["code", "pycharm", "visual studio", "sublime", "vim", ".py", "main.py", "vscode", "glassbox", "streamlit"],
             "RESEARCHING": ["chrome", "firefox", "edge", "stack overflow", "google", "documentation", "gpt", "claude"]
         }
 
