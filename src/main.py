@@ -81,9 +81,35 @@ def main():
         else:
             print("\n[Final Analysis] No transcript available.")
 
+        # Read solution code
+        code_content = ""
+        # Default to Hacker_007 for the local session
+        solution_path = os.path.join("submissions", "Hacker_007_solution.py")
+        if os.path.exists(solution_path):
+            try:
+                with open(solution_path, "r") as f:
+                    code_content = f.read()
+            except Exception as e:
+                print(f"Warning: Could not read solution file: {e}")
+
+        # Analyze code
+        code_score = 0
+        if code_content:
+            print("\n[Code Analysis] Analyzing submitted code...")
+            code_score = analyzer.analyze_code(code_content)
+            print(f"Code Quality Score: {code_score}")
+
         # calculate hard score
-        hard_score = monitor.calculate_hard_score()
-        print(f"\nHard Score Calculated: {hard_score}")
+        time_score = monitor.calculate_hard_score()
+        print(f"\nTime-based Score: {time_score}")
+        
+        # Weighted average: 50% time, 50% code quality
+        if code_score > 0:
+            hard_score = int((time_score + code_score) / 2)
+        else:
+            hard_score = time_score
+            
+        print(f"Final Hard Score: {hard_score}")
         
         # calculate soft score from final analysis
         if full_text and final_analysis:
@@ -116,16 +142,6 @@ def main():
             print("\n" + "*"*50)
             name = input("Session Finalized! Enter your name for the leaderboard: ").strip()
             if name:
-                # Read solution code
-                code_content = ""
-                solution_path = os.path.join("submissions", "Hacker_007_solution.py")
-                if os.path.exists(solution_path):
-                    try:
-                        with open(solution_path, "r") as f:
-                            code_content = f.read()
-                    except Exception as e:
-                        print(f"Warning: Could not read solution file: {e}")
-                
                 # Get AI overview
                 ai_overview = "No analysis available"
                 if final_analysis and "comment" in final_analysis:
@@ -139,6 +155,11 @@ def main():
                     ai_overview=ai_overview,
                     code_content=code_content
                 )
+                
+                # Update session log with the real name so the certificate uses it
+                real_logger.update_candidate_id(name)
+                print(f"[Session] Candidate ID updated to: {name}")
+                
                 lb.display()
             else:
                 print("Skipping leaderboard entry.")
