@@ -1,20 +1,25 @@
 # Core dependencies
-streamlit==1.28.0
-pandas==2.1.0
-plotly==5.17.0
+streamlit
+pandas
+plotly
 
 # Audio processing
-SpeechRecognition==3.10.0
-sounddevice==0.4.6
-scipy==1.11.3
-numpy==1.25.2
+SpeechRecognition
+sounddevice
+scipy
+numpy
 
 # Window monitoring (Windows only)
-pygetwindow==0.0.9
+pygetwindow
 
 # OpenAI API
-requests==2.31.0
-openai==1.3.0
+requests
+openai
 
 # Environment variables
-python-dotenv==1.0.0
+python-dotenv
+
+# Certificate Generation
+reportlab
+eth-account
+web3
