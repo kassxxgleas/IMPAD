@@ -74,13 +74,9 @@ class AudioListener:
                             print("-" * 50)
                             
                             if len(transcript.split()) >= 2:
-                                # Accumulate transcript
+                                # Accumulate transcript for final analysis
                                 self.full_transcript.append(transcript)
-                                
-                                # Analyze
-                                analysis = self.analyzer.analyze(transcript)
-                                print(f"[Cognitive Engine]: Coherence={analysis['coherence']}, Terminology={analysis['terminology']}")
-                                self.logger.log_clarity(analysis)
+                                print(f"[Transcript Captured] ({len(transcript.split())} words)")
                                 
                         except sr.UnknownValueError:
                             # print("[AudioListener] Unintelligible (could not understand audio)")
