@@ -15,7 +15,13 @@ import os
 from typing import List, Dict, Any
 
 import pandas as pd
+import altair as alt
 import streamlit as st
+import sys
+
+# Ensure src modules can be imported
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from src.core.leaderboard import Leaderboard
 
 
 # =========================
@@ -275,14 +281,13 @@ def render_summary_section(metrics: Dict[str, Any]) -> None:
 
 def render_timeline_section(df_events: pd.DataFrame) -> None:
     """
-    Render the Timeline section with state over time chart.
+    Render the Timeline section with state over time chart using Altair (Gantt style).
     """
     st.divider()
     st.header("Activity Timeline")
     st.caption(
         "This timeline shows how the candidate spent their time during the session: "
-        "coding, researching, or idle. Use it to see whether they followed a focused "
-        "problem-solving flow or jumped around."
+        "coding, researching, or idle. Colored bars indicate the duration of each activity."
     )
 
     if df_events.empty:
@@ -295,24 +300,61 @@ def render_timeline_section(df_events: pd.DataFrame) -> None:
         st.info("No STATE events to show in the timeline.")
         return
 
-    df_timeline["state_code"] = df_timeline["state"].map(STATE_TO_CODE)
-    valid_timeline = df_timeline.dropna(subset=["state_code"])
-    if valid_timeline.empty:
-        st.info("No STATE events with known states to show in the timeline.")
+    # 1. Transform events to intervals
+    # Sort by time
+    df_timeline = df_timeline.sort_values("ts").reset_index(drop=True)
+    
+    intervals = []
+    
+    # We need the session end time to close the last interval
+    # Try to find it in the original df_events or estimate it
+    max_ts = df_events["ts"].max()
+    
+    for i in range(len(df_timeline)):
+        current_state = df_timeline.loc[i, "state"]
+        start_time = df_timeline.loc[i, "ts"]
+        
+        # Determine end time
+        if i < len(df_timeline) - 1:
+            end_time = df_timeline.loc[i+1, "ts"]
+        else:
+            # Last event goes until max_ts (or +1s if same)
+            end_time = max(max_ts, start_time + 1.0)
+            
+        duration = end_time - start_time
+        
+        if duration > 0:
+            intervals.append({
+                "Activity": current_state,
+                "Start": start_time,
+                "End": end_time,
+                "Duration (s)": round(duration, 1)
+            })
+            
+    if not intervals:
+        st.info("Not enough data to generate timeline.")
         return
+        
+    df_intervals = pd.DataFrame(intervals)
+    df_intervals["Timeline"] = "Session" # Constant for single-line chart
+    
+    # 2. Create Altair Chart
+    # Color mapping
+    domain = ["CODING", "RESEARCHING", "IDLE"]
+    range_colors = ["#3b82f6", "#f97316", "#9ca3af"] # Blue, Orange, Gray
+    
+    chart = alt.Chart(df_intervals).mark_bar(size=30).encode(
+        x=alt.X('Start', title='Time (seconds)'),
+        x2='End',
+        y=alt.Y('Timeline', title=None, axis=None),
+        color=alt.Color('Activity', scale=alt.Scale(domain=domain, range=range_colors)),
+        tooltip=['Activity', 'Start', 'End', 'Duration (s)']
+    ).properties(
+        height=80
+    ).interactive()
+    
+    st.altair_chart(chart, use_container_width=True)
 
-    st.area_chart(
-        valid_timeline.set_index("ts")[["state_code"]],
-        height=300,
-        use_container_width=True,
-    )
-    st.caption(
-        "State over time:\n"
-        "- 0 = IDLE\n"
-        "- 1 = CODING\n"
-        "- 2 = RESEARCHING\n"
-        "Each step reflects the current activity state."
-    )
 
 
 def render_clarity_section(df_events: pd.DataFrame) -> None:
@@ -397,6 +439,48 @@ def init_session_state():
         st.session_state.active_challenge = False
     if "view_mode" not in st.session_state:
         st.session_state.view_mode = "DASHBOARD" # DASHBOARD or RESULTS
+    if "selected_challenge_key" not in st.session_state:
+        st.session_state.selected_challenge_key = "secure_login"
+
+# --- Challenge Definitions ---
+CHALLENGES = {
+    "secure_login": {
+        "title": "🔥 Secure Login System (Advanced)",
+        "description": "**Objective:** Implement a secure user authentication system.\n\n**Requirements:**\n- User registration and login\n- Password hashing (bcrypt)\n- JWT token generation\n- Input validation",
+        "template": """def register_user(username, password):
+    # Implement registration logic here
+    pass
+
+def login_user(username, password):
+    # Implement login logic here
+    pass
+"""
+    },
+    "reverse_string": {
+        "title": "String Reversal (Basic)",
+        "description": "**Objective:** Write a function that reverses a string without using slice notation.\n\n**Time Limit:** 5 mins",
+        "template": """def reverse_string(s):
+    # Your code here
+    pass
+"""
+    },
+    "fizzbuzz": {
+        "title": "FizzBuzz (Basic)",
+        "description": "**Objective:** Print numbers 1 to n. Print 'Fizz' for multiples of 3, 'Buzz' for 5, 'FizzBuzz' for both.\n\n**Time Limit:** 5 mins",
+        "template": """def fizzbuzz(n):
+    # Your code here
+    pass
+"""
+    },
+    "palindrome": {
+        "title": "Palindrome Checker (Basic)",
+        "description": "**Objective:** Check if a string is a palindrome (reads the same forwards and backwards).\n\n**Time Limit:** 5 mins",
+        "template": """def is_palindrome(s):
+    # Your code here
+    pass
+"""
+    }
+}
 
 def render_sidebar_account():
     with st.sidebar:
@@ -445,17 +529,32 @@ def render_challenges_tab():
     """
     st.header("Available Challenges")
     
+    # Challenge Selector
+    challenge_keys = list(CHALLENGES.keys())
+    # Create a mapping for display names
+    display_map = {k: CHALLENGES[k]["title"] for k in challenge_keys}
+    
+    # If a session is active, lock the selection
+    disabled = st.session_state.active_challenge
+    
+    selected_key = st.selectbox(
+        "Choose a Challenge:",
+        options=challenge_keys,
+        format_func=lambda x: display_map[x],
+        index=challenge_keys.index(st.session_state.selected_challenge_key),
+        disabled=disabled
+    )
+    
+    # Update state if changed and not locked
+    if not disabled:
+        st.session_state.selected_challenge_key = selected_key
+        
+    current_challenge = CHALLENGES[st.session_state.selected_challenge_key]
+
     # Challenge Card
     with st.container(border=True):
-        st.subheader("🔥 Challenge: Secure Login System")
-        st.markdown(
-            "**Objective:** Implement a secure user authentication system.\n\n"
-            "**Requirements:**\n"
-            "- User registration and login\n"
-            "- Password hashing (bcrypt)\n"
-            "- JWT token generation\n"
-            "- Input validation"
-        )
+        st.subheader(current_challenge["title"])
+        st.markdown(current_challenge["description"])
         
         # Check assignment status
         is_assigned = st.session_state.active_challenge
@@ -469,14 +568,7 @@ def render_challenges_tab():
             st.subheader("💻 Code Editor")
             
             # Default code template
-            default_code = """def register_user(username, password):
-    # Implement registration logic here
-    pass
-
-def login_user(username, password):
-    # Implement login logic here
-    pass
-"""
+            default_code = current_challenge["template"]
             code_input = st.text_area("Write your solution here:", value=default_code, height=300)
             
             if st.button("💾 Submit Solution", type="primary"):
@@ -661,6 +753,77 @@ def render_audit_tab():
     with st.expander("Debug · raw session data"):
         st.json(session_data)
 
+def render_leaderboard_tab():
+    """
+    Render the Leaderboard tab.
+    """
+    st.header("🏆 Hall of Fame")
+    st.caption("Top performing candidates ranked by their Total Score (Hard + Soft skills).")
+    
+    lb = Leaderboard()
+    if not lb.entries:
+        st.info("No entries yet. Complete a challenge to get on the leaderboard!")
+        return
+
+    # Convert to DataFrame for display
+    data = []
+    for entry in lb.entries:
+        data.append({
+            "Rank": 0, # Placeholder
+            "Name": entry.name,
+            "Total Score": entry.total_score,
+            "Hard Score": entry.hard_score,
+            "Soft Score": entry.soft_score,
+            "Timestamp": pd.to_datetime(entry.timestamp, unit='s').strftime('%Y-%m-%d %H:%M'),
+            "_obj": entry # Hidden column for details
+        })
+    
+    df = pd.DataFrame(data)
+    df["Rank"] = range(1, len(df) + 1)
+    
+    # Display Main Table
+    st.dataframe(
+        df[["Rank", "Name", "Total Score", "Hard Score", "Soft Score", "Timestamp"]],
+        column_config={
+            "Total Score": st.column_config.ProgressColumn(
+                "Total Score",
+                help="Average of Hard and Soft scores",
+                format="%.1f",
+                min_value=0,
+                max_value=100,
+            ),
+            "Hard Score": st.column_config.NumberColumn("Hard Score", format="%d"),
+            "Soft Score": st.column_config.NumberColumn("Soft Score", format="%d"),
+        },
+        use_container_width=True,
+        hide_index=True
+    )
+    
+    st.divider()
+    st.subheader("🔍 Submission Details")
+    
+    # Selection for details
+    selected_name = st.selectbox(
+        "Select a candidate to view details:",
+        options=df["Name"].tolist(),
+        index=0
+    )
+    
+    if selected_name:
+        # Find the entry object
+        entry = next((item["_obj"] for item in data if item["Name"] == selected_name), None)
+        
+        if entry:
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("### 🤖 AI Overview")
+                st.info(entry.ai_overview)
+                
+            with col2:
+                st.markdown("### 💻 Code Submission")
+                st.code(entry.code_content, language="python")
+
 def main() -> None:
     """
     Main entrypoint for the Streamlit dashboard.
@@ -682,13 +845,16 @@ def main() -> None:
     st.title("GlassBox Candidate Session Dashboard")
     
     # Tabs
-    tab1, tab2 = st.tabs(["🎯 Challenges", "📊 Live Audit"])
+    tab1, tab2, tab3 = st.tabs(["🎯 Challenges", "📊 Live Audit", "🏆 Leaderboard"])
     
     with tab1:
         render_challenges_tab()
         
     with tab2:
         render_audit_tab()
+
+    with tab3:
+        render_leaderboard_tab()
 
     # Sidebar
     with st.sidebar:
