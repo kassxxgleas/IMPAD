@@ -63,3 +63,13 @@ class FakeLLM:
             "completeness": completeness,
             "comment": comment
         }
+
+    def analyze_code(self, code: str) -> int:
+        """
+        Analyze code quality and return a score (0-100).
+        """
+        if not code or len(code.strip()) < 10:
+            return 0
+            
+        # Random score for mock mode
+        return random.randint(60, 95)
