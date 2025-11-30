@@ -1,40 +1,3027 @@
 {
-  "session_id": "4e9b8dd3-848e-437c-a44f-0cd1b04b2ad6",
+  "session_id": "e8739fca-6e5e-46c6-963c-8860249dad41",
   "candidate_id": "hacker_007",
-  "started_at": 1764455957.2385898,
+  "started_at": 1764456249.138188,
   "events": [
     {
       "ts": 0.0,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 19.01,
       "type": "STATE",
       "payload": {
         "state": "CODING"
       }
     },
     {
-      "ts": 26.01,
+      "ts": 30.02,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 32.02,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 36.02,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 37.02,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 46.03,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 55.03,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 59.04,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 62.04,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 64.04,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 65.04,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 66.04,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 67.05,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 172.66,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any meaningful content or context."
+      }
+    },
+    {
+      "ts": 204.11,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 235.12,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 284.48,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 299.04,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No relevant technical content provided. Lacks explanation of problem-solving process."
+      }
+    },
+    {
+      "ts": 312.72,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short to evaluate."
+      }
+    },
+    {
+      "ts": 339.07,
       "type": "CLARITY",
       "payload": {
         "coherence": 10,
         "terminology": 10,
         "completeness": 5,
-        "comment": "Terminology is lacking. Incoherent explanation."
+        "comment": "Uses correct technical term 'timer' but lacks context and details. Needs to provide more information and context."
       }
     },
     {
-      "ts": 35.9,
-      "type": "FINAL_ANALYSIS",
+      "ts": 363.18,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 364.18,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 376.19,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 396.2,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 397.2,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 419.21,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 432.22,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 448.74,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any technical or coherent explanation. No relevant information provided."
+      }
+    },
+    {
+      "ts": 503.26,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 511.41,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 531.27,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 532.27,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 539.27,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 566.29,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 567.29,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 568.29,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 569.29,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 573.92,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any technical detail or coherence. Needs to provide a structured explanation of the problem-solving process."
+      }
+    },
+    {
+      "ts": 612.53,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is extremely unclear and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 620.32,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 625.32,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 625.98,
+      "type": "CLARITY",
       "payload": {
         "coherence": 10,
-        "terminology": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Strength: None. Improvement: Lack of clarity and technical vocabulary."
+      }
+    },
+    {
+      "ts": 643.33,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 646.33,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 661.34,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 665.34,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 673.35,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 674.35,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 675.35,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 687.36,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 702.37,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 703.37,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 704.38,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 706.38,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 707.38,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 735.81,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 779.41,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 780.42,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 781.42,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 797.43,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 798.43,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 806.43,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 824.67,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is extremely short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 828.45,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 837.45,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 838.99,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 95,
+        "terminology": 0,
+        "completeness": 10,
+        "comment": "Clear and concise instruction for setting an alarm, but lacks technical detail and explanation."
+      }
+    },
+    {
+      "ts": 839.45,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 840.46,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 865.38,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Incomplete explanation with no clear structure. Lacks technical vocabulary and coherence."
+      }
+    },
+    {
+      "ts": 879.06,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided. Lacks technical terminology and completeness."
+      }
+    },
+    {
+      "ts": 900.49,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 926.51,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 927.51,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 932.51,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 933.51,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 934.52,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 935.52,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 948.53,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 963.54,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 964.54,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 965.54,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 966.79,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided. Lacks technical terminology and completeness."
+      }
+    },
+    {
+      "ts": 979.55,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 992.64,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any relevant information."
+      }
+    },
+    {
+      "ts": 1007.57,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1022.57,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1027.58,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1031.43,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
         "completeness": 5,
-        "comment": "Terminology is lacking. Area for improvement: Provide more context and details for better understanding."
+        "comment": "The explanation lacks technical details and terminology. It is too vague and incomplete."
+      }
+    },
+    {
+      "ts": 1032.58,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1033.58,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1039.59,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1040.59,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1042.59,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1064.6,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1065.61,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1066.61,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1070.61,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1071.61,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1078.62,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1099.63,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1105.64,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1106.64,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1111.64,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1113.64,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1119.65,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1120.65,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1162.67,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1168.68,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1169.68,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1171.68,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1173.68,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1176.69,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1177.69,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1191.7,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1216.51,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Strength: Attempted to communicate a thought. Improvement: Lacks technical clarity and structure."
+      }
+    },
+    {
+      "ts": 1227.72,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1240.73,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1241.73,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1253.74,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1278.75,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1282.76,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1295.76,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1301.79,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short to evaluate."
+      }
+    },
+    {
+      "ts": 1303.77,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1304.77,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1328.3,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 10,
+        "completeness": 0,
+        "comment": "Terminology is vague. Lacks coherence and completeness."
+      }
+    },
+    {
+      "ts": 1347.79,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1348.8,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1350.8,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1352.8,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1353.81,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1354.81,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1367.82,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1369.83,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1370.83,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1371.83,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1418.86,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1471.88,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1480.89,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1486.68,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short to evaluate."
+      }
+    },
+    {
+      "ts": 1502.2,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation or technical content."
+      }
+    },
+    {
+      "ts": 1517.14,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is extremely vague and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 1532.02,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 10,
+        "comment": "The explanation is very vague and lacks technical precision. It fails to provide any context or details."
+      }
+    },
+    {
+      "ts": 1532.91,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1534.92,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1537.92,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1542.93,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1543.93,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1546.39,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any detail or structure. No technical terms used."
+      }
+    },
+    {
+      "ts": 1561.94,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1568.95,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1584.7,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short to evaluate."
+      }
+    },
+    {
+      "ts": 1601.96,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1610.98,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any technical content or problem-solving process."
+      }
+    },
+    {
+      "ts": 1621.98,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1634.98,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1636.83,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any technical or problem-solving content. No structure or relevant information provided."
+      }
+    },
+    {
+      "ts": 1677.0,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1682.01,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1710.02,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1717.03,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1724.03,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1724.68,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks coherence, terminology, and completeness."
+      }
+    },
+    {
+      "ts": 1749.05,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1750.05,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1796.07,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1802.08,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1815.09,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1827.1,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1829.1,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1833.96,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Strength: Friendly introduction. Improvement: Lacks technical content and structure."
+      }
+    },
+    {
+      "ts": 1848.1,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 5,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Strength: None. Area for improvement: Provide a coherent explanation related to the problem-solving process."
+      }
+    },
+    {
+      "ts": 1860.12,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1861.82,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 10,
+        "completeness": 0,
+        "comment": "Lacks coherence and completeness. Uses vague terminology."
+      }
+    },
+    {
+      "ts": 1863.12,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1864.13,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1872.13,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1875.42,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks technical details. Needs to provide a clear problem-solving approach."
+      }
+    },
+    {
+      "ts": 1884.14,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1885.14,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1889.95,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation or technical details. Needs to provide a structured approach using appropriate technical terms."
+      }
+    },
+    {
+      "ts": 1891.15,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1895.15,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1897.16,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1904.38,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks coherence, terminology, and completeness. Needs to provide a clear and relevant response to the question."
+      }
+    },
+    {
+      "ts": 1966.09,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks coherence, terminology, and completeness. Needs clear and technical explanation."
+      }
+    },
+    {
+      "ts": 1979.43,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided. Lacks technical details and problem-solving process."
+      }
+    },
+    {
+      "ts": 1980.2,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1986.2,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1987.21,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 1988.21,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 1989.21,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 1992.9,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any technical content or problem-solving process."
+      }
+    },
+    {
+      "ts": 1993.22,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2019.23,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2020.24,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2044.25,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2045.25,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2066.31,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 2103.28,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2115.86,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided. Lacks technical terminology and completeness."
+      }
+    },
+    {
+      "ts": 2209.33,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2213.34,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2215.34,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2219.35,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2221.35,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2240.36,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2243.37,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2261.92,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation or technical content."
+      }
+    },
+    {
+      "ts": 2307.4,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2310.4,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2342.42,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2343.42,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2367.43,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2368.44,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2370.44,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2383.45,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2434.48,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2435.48,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2446.49,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2451.5,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2459.5,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2462.51,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2490.52,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2496.53,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2497.53,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2504.54,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2506.54,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2507.55,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2510.55,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2557.58,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2559.58,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2561.44,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 2561.59,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2562.59,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2563.59,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2573.6,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2575.61,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2632.64,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2654.65,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2655.65,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2657.66,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2658.66,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2661.67,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2668.67,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2675.68,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 2678.68,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2682.69,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2690.7,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2693.7,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2694.7,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2695.71,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2732.73,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2733.73,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 2735.74,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 2866.68,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 5,
+        "comment": "Strength: The response is concise. Improvement: Lacks technical terminology and coherence."
+      }
+    },
+    {
+      "ts": 2893.98,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "The key strength is the attempt to address the problem, but the area for improvement is the lack of clarity and specificity in the question."
+      }
+    },
+    {
+      "ts": 2933.33,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation or technical terminology. Completely incomplete."
+      }
+    },
+    {
+      "ts": 2959.41,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any meaningful content. No problem-solving process or technical details provided."
+      }
+    },
+    {
+      "ts": 2985.64,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Incomplete response with no technical content."
+      }
+    },
+    {
+      "ts": 3008.89,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 3047.92,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 5,
+        "comment": "Strength: Clear request for action. Improvement: Lacks technical terminology and context."
+      }
+    },
+    {
+      "ts": 3062.6,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is completely incoherent and lacks any technical or problem-solving content."
+      }
+    },
+    {
+      "ts": 3110.95,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 3114.95,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 3158.17,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Strength: None. Improvement: Provide a clear and detailed explanation of the problem-solving process."
+      }
+    },
+    {
+      "ts": 3197.32,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent technical explanation. No terminology or completeness."
+      }
+    },
+    {
+      "ts": 3485.63,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any technical content or context. No problem-solving process provided."
+      }
+    },
+    {
+      "ts": 3617.37,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 3630.94,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any coherent structure, technical terminology, or completeness."
+      }
+    },
+    {
+      "ts": 3655.95,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any technical or problem-solving content. No structured explanation provided."
+      }
+    },
+    {
+      "ts": 3681.57,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided."
+      }
+    },
+    {
+      "ts": 3694.72,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any technical details or problem-solving process."
+      }
+    },
+    {
+      "ts": 3984.86,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 85,
+        "terminology": 0,
+        "completeness": 10,
+        "comment": "Clear instruction for a specific task, but lacks technical detail and context. Needs to provide more information on how to turn off the alarm."
+      }
+    },
+    {
+      "ts": 4143.37,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 4157.64,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Incomplete input, no clear problem-solving process."
+      }
+    },
+    {
+      "ts": 4195.91,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any context or logical structure. No technical terms used."
+      }
+    },
+    {
+      "ts": 4233.83,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation, technical terminology, or completeness."
+      }
+    },
+    {
+      "ts": 4259.66,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent explanation or technical terms. Completely irrelevant to the problem."
+      }
+    },
+    {
+      "ts": 4266.51,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4270.51,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4278.52,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4292.53,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4293.53,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4298.54,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4321.88,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Lacks any coherent technical explanation. Needs to provide a structured response with technical terms."
+      }
+    },
+    {
+      "ts": 4346.56,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4347.57,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4350.57,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4355.58,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4359.58,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4406.61,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4407.61,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4415.62,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4417.63,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4422.63,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4424.64,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4484.67,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4507.68,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4508.69,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4514.69,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4515.7,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4520.7,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4521.71,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4522.71,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4526.72,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4527.72,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4528.73,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4529.73,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4530.74,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4531.74,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4532.74,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4541.75,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4551.76,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4554.77,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4555.77,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4566.78,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4567.78,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4571.79,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4575.79,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4576.8,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4579.8,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4582.81,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4583.81,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4587.41,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks coherence, technical terminology, and completeness."
+      }
+    },
+    {
+      "ts": 4593.82,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4595.83,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4596.83,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4599.84,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4600.84,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4719.9,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4723.91,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4725.92,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4734.92,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4735.93,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4746.94,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4747.94,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4748.95,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4757.96,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4775.97,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4776.97,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4778.98,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4779.98,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4785.99,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4790.99,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4793.0,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4794.0,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4805.31,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any technical or problem-solving content. No clear logic or structure."
+      }
+    },
+    {
+      "ts": 4806.01,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4807.02,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4810.02,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4812.03,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4816.04,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4817.04,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4823.05,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 4825.05,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4842.51,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks coherence, terminology, and completeness."
+      }
+    },
+    {
+      "ts": 4852.07,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 4856.27,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "The candidate's response lacks technical depth and relevant information. They need to provide a more detailed and structured explanation."
+      }
+    },
+    {
+      "ts": 4871.08,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 4906.67,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any meaningful content and does not address the problem at hand."
+      }
+    },
+    {
+      "ts": 4967.69,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation is too short and lacks any meaningful content."
+      }
+    },
+    {
+      "ts": 5018.15,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5020.16,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5021.16,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5027.17,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5035.18,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5036.18,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5037.19,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5039.19,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5045.2,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5048.2,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5051.21,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5052.21,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5067.25,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 10,
+        "completeness": 0,
+        "comment": "Terminology used is vague. Explanation lacks coherence and completeness."
+      }
+    },
+    {
+      "ts": 5091.91,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "The key strength is the clear question posed. Area for improvement is the lack of technical details or problem-solving process."
+      }
+    },
+    {
+      "ts": 5117.45,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "No coherent explanation provided. Lacks technical details and problem-solving process."
+      }
+    },
+    {
+      "ts": 5180.15,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 0,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Explanation lacks any meaningful content. Needs to provide a clear and relevant response to the question."
+      }
+    },
+    {
+      "ts": 5338.35,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5351.36,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5355.37,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5362.38,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5364.38,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5370.39,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5372.4,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5374.4,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5384.41,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 5398.42,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5401.43,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5403.43,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5410.44,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5411.75,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "The explanation is too short and lacks any technical details."
+      }
+    },
+    {
+      "ts": 5413.45,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5414.45,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 5422.46,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5427.47,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
+      }
+    },
+    {
+      "ts": 5428.48,
+      "type": "STATE",
+      "payload": {
+        "state": "IDLE"
       }
     }
   ],
-  "ended_at": 1764455993.1372387,
+  "ended_at": null,
   "summary": {
-    "hard_score": 80,
+    "hard_score": 0,
     "soft_score": 0,
-    "verdict": "PASS"
+    "verdict": "PENDING"
   }
 }

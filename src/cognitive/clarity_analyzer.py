@@ -17,7 +17,7 @@ from .llm_config import (
     DEBUG
 )
 from .fake_llm import FakeLLM
-from .system_prompt import get_system_prompt
+from .prompts import get_system_prompt
 
 
 class ClarityAnalyzer:

@@ -11,10 +11,17 @@ The app shows:
 """
 
 import json
+import os
 from typing import List, Dict, Any
 
 import pandas as pd
+import altair as alt
 import streamlit as st
+import sys
+
+# Ensure src modules can be imported
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from src.core.leaderboard import Leaderboard
 
 
 # =========================
@@ -274,14 +281,13 @@ def render_summary_section(metrics: Dict[str, Any]) -> None:
 
 def render_timeline_section(df_events: pd.DataFrame) -> None:
     """
-    Render the Timeline section with state over time chart.
+    Render the Timeline section with state over time chart using Altair (Gantt style).
     """
     st.divider()
     st.header("Activity Timeline")
     st.caption(
         "This timeline shows how the candidate spent their time during the session: "
-        "coding, researching, or idle. Use it to see whether they followed a focused "
-        "problem-solving flow or jumped around."
+        "coding, researching, or idle. Colored bars indicate the duration of each activity."
     )
 
     if df_events.empty:
@@ -294,24 +300,61 @@ def render_timeline_section(df_events: pd.DataFrame) -> None:
         st.info("No STATE events to show in the timeline.")
         return
 
-    df_timeline["state_code"] = df_timeline["state"].map(STATE_TO_CODE)
-    valid_timeline = df_timeline.dropna(subset=["state_code"])
-    if valid_timeline.empty:
-        st.info("No STATE events with known states to show in the timeline.")
+    # 1. Transform events to intervals
+    # Sort by time
+    df_timeline = df_timeline.sort_values("ts").reset_index(drop=True)
+    
+    intervals = []
+    
+    # We need the session end time to close the last interval
+    # Try to find it in the original df_events or estimate it
+    max_ts = df_events["ts"].max()
+    
+    for i in range(len(df_timeline)):
+        current_state = df_timeline.loc[i, "state"]
+        start_time = df_timeline.loc[i, "ts"]
+        
+        # Determine end time
+        if i < len(df_timeline) - 1:
+            end_time = df_timeline.loc[i+1, "ts"]
+        else:
+            # Last event goes until max_ts (or +1s if same)
+            end_time = max(max_ts, start_time + 1.0)
+            
+        duration = end_time - start_time
+        
+        if duration > 0:
+            intervals.append({
+                "Activity": current_state,
+                "Start": start_time,
+                "End": end_time,
+                "Duration (s)": round(duration, 1)
+            })
+            
+    if not intervals:
+        st.info("Not enough data to generate timeline.")
         return
+        
+    df_intervals = pd.DataFrame(intervals)
+    df_intervals["Timeline"] = "Session" # Constant for single-line chart
+    
+    # 2. Create Altair Chart
+    # Color mapping
+    domain = ["CODING", "RESEARCHING", "IDLE"]
+    range_colors = ["#3b82f6", "#f97316", "#9ca3af"] # Blue, Orange, Gray
+    
+    chart = alt.Chart(df_intervals).mark_bar(size=30).encode(
+        x=alt.X('Start', title='Time (seconds)'),
+        x2='End',
+        y=alt.Y('Timeline', title=None, axis=None),
+        color=alt.Color('Activity', scale=alt.Scale(domain=domain, range=range_colors)),
+        tooltip=['Activity', 'Start', 'End', 'Duration (s)']
+    ).properties(
+        height=80
+    ).interactive()
+    
+    st.altair_chart(chart, use_container_width=True)
 
-    st.area_chart(
-        valid_timeline.set_index("ts")[["state_code"]],
-        height=300,
-        use_container_width=True,
-    )
-    st.caption(
-        "State over time:\n"
-        "- 0 = IDLE\n"
-        "- 1 = CODING\n"
-        "- 2 = RESEARCHING\n"
-        "Each step reflects the current activity state."
-    )
 
 
 def render_clarity_section(df_events: pd.DataFrame) -> None:
@@ -394,6 +437,50 @@ def init_session_state():
         st.session_state.user = None
     if "active_challenge" not in st.session_state:
         st.session_state.active_challenge = False
+    if "view_mode" not in st.session_state:
+        st.session_state.view_mode = "DASHBOARD" # DASHBOARD or RESULTS
+    if "selected_challenge_key" not in st.session_state:
+        st.session_state.selected_challenge_key = "secure_login"
+
+# --- Challenge Definitions ---
+CHALLENGES = {
+    "secure_login": {
+        "title": "🔥 Secure Login System (Advanced)",
+        "description": "**Objective:** Implement a secure user authentication system.\n\n**Requirements:**\n- User registration and login\n- Password hashing (bcrypt)\n- JWT token generation\n- Input validation",
+        "template": """def register_user(username, password):
+    # Implement registration logic here
+    pass
+
+def login_user(username, password):
+    # Implement login logic here
+    pass
+"""
+    },
+    "reverse_string": {
+        "title": "String Reversal (Basic)",
+        "description": "**Objective:** Write a function that reverses a string without using slice notation.\n\n**Time Limit:** 5 mins",
+        "template": """def reverse_string(s):
+    # Your code here
+    pass
+"""
+    },
+    "fizzbuzz": {
+        "title": "FizzBuzz (Basic)",
+        "description": "**Objective:** Print numbers 1 to n. Print 'Fizz' for multiples of 3, 'Buzz' for 5, 'FizzBuzz' for both.\n\n**Time Limit:** 5 mins",
+        "template": """def fizzbuzz(n):
+    # Your code here
+    pass
+"""
+    },
+    "palindrome": {
+        "title": "Palindrome Checker (Basic)",
+        "description": "**Objective:** Check if a string is a palindrome (reads the same forwards and backwards).\n\n**Time Limit:** 5 mins",
+        "template": """def is_palindrome(s):
+    # Your code here
+    pass
+"""
+    }
+}
 
 def render_sidebar_account():
     with st.sidebar:
@@ -442,17 +529,32 @@ def render_challenges_tab():
     """
     st.header("Available Challenges")
     
+    # Challenge Selector
+    challenge_keys = list(CHALLENGES.keys())
+    # Create a mapping for display names
+    display_map = {k: CHALLENGES[k]["title"] for k in challenge_keys}
+    
+    # If a session is active, lock the selection
+    disabled = st.session_state.active_challenge
+    
+    selected_key = st.selectbox(
+        "Choose a Challenge:",
+        options=challenge_keys,
+        format_func=lambda x: display_map[x],
+        index=challenge_keys.index(st.session_state.selected_challenge_key),
+        disabled=disabled
+    )
+    
+    # Update state if changed and not locked
+    if not disabled:
+        st.session_state.selected_challenge_key = selected_key
+        
+    current_challenge = CHALLENGES[st.session_state.selected_challenge_key]
+
     # Challenge Card
     with st.container(border=True):
-        st.subheader("🔥 Challenge: Secure Login System")
-        st.markdown(
-            "**Objective:** Implement a secure user authentication system.\n\n"
-            "**Requirements:**\n"
-            "- User registration and login\n"
-            "- Password hashing (bcrypt)\n"
-            "- JWT token generation\n"
-            "- Input validation"
-        )
+        st.subheader(current_challenge["title"])
+        st.markdown(current_challenge["description"])
         
         # Check assignment status
         is_assigned = st.session_state.active_challenge
@@ -466,14 +568,7 @@ def render_challenges_tab():
             st.subheader("💻 Code Editor")
             
             # Default code template
-            default_code = """def register_user(username, password):
-    # Implement registration logic here
-    pass
-
-def login_user(username, password):
-    # Implement login logic here
-    pass
-"""
+            default_code = current_challenge["template"]
             code_input = st.text_area("Write your solution here:", value=default_code, height=300)
             
             if st.button("💾 Submit Solution", type="primary"):
@@ -483,13 +578,35 @@ def login_user(username, password):
                 with open(filename, "w") as f:
                     f.write(code_input)
                 
-                st.success(f"Solution saved to {filename}!")
-                st.balloons()
+                # Signal backend to stop
+                with open("STOP_SESSION", "w") as f:
+                    f.write("STOP")
                 
-                # Stop the backend session (optional, but good for cleanup)
-                # For now, we just mark the challenge as done in UI if needed
-                # st.session_state.active_challenge = False
-                # st.rerun()
+                st.success(f"Solution saved to {filename}!")
+                st.info("Stopping session and generating report... (this may take up to 30 seconds)")
+                
+                # Poll for completion (max 30 seconds)
+                import time
+                max_retries = 30
+                for i in range(max_retries):
+                    time.sleep(1)
+                    try:
+                        with open(os.path.join("data", "session_log.json"), "r") as f:
+                            data = json.load(f)
+                        
+                        # Check if session ended AND has final analysis
+                        if data.get("ended_at") is not None:
+                            # Also verify FINAL_ANALYSIS exists
+                            has_final = any(e.get("type") == "FINAL_ANALYSIS" for e in data.get("events", []))
+                            if has_final:
+                                break
+                    except:
+                        pass
+                
+                # Update state to show results
+                st.session_state.active_challenge = False
+                st.session_state.view_mode = "RESULTS"
+                st.rerun()
 
         else:
             col1, col2 = st.columns([1, 3])
@@ -507,23 +624,35 @@ def login_user(username, password):
                         st.error("Please login first!")
                     else:
                         try:
-                            # Launch main_role.py SILENTLY
+                            # Clean up old session
+                            # 1. Signal any running processes to stop
+                            with open("STOP_SESSION", "w") as f:
+                                f.write("STOP")
+                            
+                            # 2. Wait for old process to finish
+                            import time
+                            time.sleep(2)
+                            
+                            # 3. Delete old session log
+                            log_path = os.path.join("data", "session_log.json")
+                            if os.path.exists(log_path):
+                                os.remove(log_path)
+                            
+                            # 4. Remove stop signal
+                            if os.path.exists("STOP_SESSION"):
+                                os.remove("STOP_SESSION")
+                            
+                            # Launch src/main.py in VISIBLE mode for debugging
                             if sys.platform == "win32":
-                                # CREATE_NO_WINDOW = 0x08000000
                                 subprocess.Popen(
-                                    ["python", "main_role.py"], 
-                                    creationflags=0x08000000,
+                                    "start cmd /k python src/main.py", 
                                     shell=True
                                 )
                             else:
-                                # Fallback for non-windows
-                                subprocess.Popen(
-                                    ["python", "main_role.py"],
-                                    stdout=subprocess.DEVNULL,
-                                    stderr=subprocess.DEVNULL
-                                )
+                                subprocess.Popen(["python", "src/main.py"])
                             
                             st.session_state.active_challenge = True
+                            st.session_state.view_mode = "CHALLENGE"
                             st.rerun()
                             
                         except Exception as e:
@@ -535,13 +664,68 @@ def login_user(username, password):
                 else:
                     st.caption("Session is running.")
 
+def render_results_view():
+    """
+    Render the final results after submission.
+    """
+    st.balloons()
+    st.title("🎉 Challenge Completed!")
+    
+    # Load latest session log
+    try:
+        with open(os.path.join("data", "session_log.json"), "r") as f:
+            data = json.load(f)
+            
+        user = st.session_state.user
+        candidate_name = user['name'] if user else data.get("candidate_id", "Unknown")
+        
+        # Calculate duration
+        start_time = data.get("started_at", 0)
+        end_time = data.get("ended_at", 0)
+        duration = 0
+        if start_time and end_time:
+            duration = end_time - start_time
+        
+        # Find Final Analysis
+        final_transcript = "No transcript available."
+        final_comment = "No analysis available."
+        
+        for event in data.get("events", []):
+            if event["type"] == "FINAL_ANALYSIS":
+                payload = event["payload"]
+                final_transcript = payload.get("transcript", "No transcript found.")
+                final_comment = payload.get("comment", "No comment found.")
+        
+        # Display Results
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Candidate", candidate_name)
+        col2.metric("Time Taken", f"{duration:.1f}s")
+        col3.metric("Verdict", data["summary"].get("verdict", "PENDING"))
+        
+        st.divider()
+        
+        st.subheader("🗣️ Final Audio Transcript")
+        st.info(f"\"{final_transcript}\"")
+        
+        st.subheader("🤖 AI Analysis")
+        st.success(f"**Feedback:** {final_comment}")
+        
+        st.divider()
+        
+        if st.button("🔙 Back to Dashboard"):
+            st.session_state.view_mode = "DASHBOARD"
+            st.rerun()
+            
+    except Exception as e:
+        st.error(f"Could not load results: {e}")
+
 def render_audit_tab():
     """
     Render the Live Audit tab (existing dashboard logic).
     """
     # 1) Load session data
     try:
-        session_data = load_session_log("session_log.json")
+        session_data = load_session_log(os.path.join("data", "session_log.json"))
     except FileNotFoundError:
         st.warning("Waiting for session data... (Start a challenge first)")
         return
@@ -569,6 +753,77 @@ def render_audit_tab():
     with st.expander("Debug · raw session data"):
         st.json(session_data)
 
+def render_leaderboard_tab():
+    """
+    Render the Leaderboard tab.
+    """
+    st.header("🏆 Hall of Fame")
+    st.caption("Top performing candidates ranked by their Total Score (Hard + Soft skills).")
+    
+    lb = Leaderboard()
+    if not lb.entries:
+        st.info("No entries yet. Complete a challenge to get on the leaderboard!")
+        return
+
+    # Convert to DataFrame for display
+    data = []
+    for entry in lb.entries:
+        data.append({
+            "Rank": 0, # Placeholder
+            "Name": entry.name,
+            "Total Score": entry.total_score,
+            "Hard Score": entry.hard_score,
+            "Soft Score": entry.soft_score,
+            "Timestamp": pd.to_datetime(entry.timestamp, unit='s').strftime('%Y-%m-%d %H:%M'),
+            "_obj": entry # Hidden column for details
+        })
+    
+    df = pd.DataFrame(data)
+    df["Rank"] = range(1, len(df) + 1)
+    
+    # Display Main Table
+    st.dataframe(
+        df[["Rank", "Name", "Total Score", "Hard Score", "Soft Score", "Timestamp"]],
+        column_config={
+            "Total Score": st.column_config.ProgressColumn(
+                "Total Score",
+                help="Average of Hard and Soft scores",
+                format="%.1f",
+                min_value=0,
+                max_value=100,
+            ),
+            "Hard Score": st.column_config.NumberColumn("Hard Score", format="%d"),
+            "Soft Score": st.column_config.NumberColumn("Soft Score", format="%d"),
+        },
+        use_container_width=True,
+        hide_index=True
+    )
+    
+    st.divider()
+    st.subheader("🔍 Submission Details")
+    
+    # Selection for details
+    selected_name = st.selectbox(
+        "Select a candidate to view details:",
+        options=df["Name"].tolist(),
+        index=0
+    )
+    
+    if selected_name:
+        # Find the entry object
+        entry = next((item["_obj"] for item in data if item["Name"] == selected_name), None)
+        
+        if entry:
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("### 🤖 AI Overview")
+                st.info(entry.ai_overview)
+                
+            with col2:
+                st.markdown("### 💻 Code Submission")
+                st.code(entry.code_content, language="python")
+
 def main() -> None:
     """
     Main entrypoint for the Streamlit dashboard.
@@ -582,16 +837,24 @@ def main() -> None:
     # Initialize session state
     init_session_state()
 
+    # Check View Mode
+    if st.session_state.view_mode == "RESULTS":
+        render_results_view()
+        return
+
     st.title("GlassBox Candidate Session Dashboard")
     
     # Tabs
-    tab1, tab2 = st.tabs(["🎯 Challenges", "📊 Live Audit"])
+    tab1, tab2, tab3 = st.tabs(["🎯 Challenges", "📊 Live Audit", "🏆 Leaderboard"])
     
     with tab1:
         render_challenges_tab()
         
     with tab2:
         render_audit_tab()
+
+    with tab3:
+        render_leaderboard_tab()
 
     # Sidebar
     with st.sidebar:

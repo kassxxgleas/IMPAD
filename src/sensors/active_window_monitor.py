@@ -67,7 +67,7 @@ class ActiveWindowMonitor:
                 # Write to log
                 self.logger.log_state(new_state)
                 
-                print(f"\/\/ Action: {new_state} | Title changed: {title[:50]}...")
+                print(f"// Action: {new_state} | Title changed: {title[:50]}...")
                 
                 last_state = new_state
                 last_title = title

@@ -14,7 +14,7 @@ class AudioListener:
         self.running = False
         self.thread = None
         self.fs = 44100  # Sample rate
-        self.seconds = 10  # Duration of recording chunk (Increased to 10s)
+        self.seconds = 5  # Duration of recording chunk (Reduced to 5s for faster response)
         self.device_index = None
         
         # Data accumulation
@@ -54,39 +54,49 @@ class AudioListener:
                     continue
 
                 # Save as temporary WAV for speech_recognition
-                temp_filename = "temp_chunk.wav"
+                # Use unique filename to avoid locking issues
+                import uuid
+                temp_filename = f"temp_chunk_{uuid.uuid4().hex}.wav"
+                
                 # Convert to 16-bit PCM for wavfile write
                 data = (myrecording * 32767).astype(np.int16)
                 wav.write(temp_filename, self.fs, data)
                 
                 # Transcribe
-                with sr.AudioFile(temp_filename) as source:
-                    audio_data = self.recognizer.record(source)
-                    
-                    try:
-                        transcript = self.recognizer.recognize_google(audio_data)
-                        print("-" * 50)
-                        print(f"[Candidate (Voice)]: {transcript}")
-                        print("-" * 50)
+                try:
+                    with sr.AudioFile(temp_filename) as source:
+                        audio_data = self.recognizer.record(source)
                         
-                        if len(transcript.split()) >= 2:
-                            # Accumulate transcript
-                            self.full_transcript.append(transcript)
+                        try:
+                            transcript = self.recognizer.recognize_google(audio_data)
+                            print("-" * 50)
+                            print(f"[Candidate (Voice)]: {transcript}")
+                            print("-" * 50)
                             
-                            # Analyze
-                            analysis = self.analyzer.analyze(transcript)
-                            print(f"[Cognitive Engine]: Coherence={analysis['coherence']}, Terminology={analysis['terminology']}")
-                            self.logger.log_clarity(analysis)
-                            
-                    except sr.UnknownValueError:
-                        # print("[AudioListener] Unintelligible (could not understand audio)")
-                        pass # Unintelligible
-                    except sr.RequestError:
-                        print("[AudioListener] API unavailable")
+                            if len(transcript.split()) >= 2:
+                                # Accumulate transcript for final analysis
+                                self.full_transcript.append(transcript)
+                                print(f"[Transcript Captured] ({len(transcript.split())} words)")
+                                
+                        except sr.UnknownValueError:
+                            # print("[AudioListener] Unintelligible (could not understand audio)")
+                            pass # Unintelligible
+                        except sr.RequestError:
+                            print("[AudioListener] API unavailable")
+                finally:
+                    # Always cleanup temp file
+                    if os.path.exists(temp_filename):
+                        try:
+                            os.remove(temp_filename)
+                        except Exception as e:
+                            print(f"[AudioListener] Cleanup warning: {e}")
                 
-                # Cleanup
+                # Cleanup (redundant check but safe)
                 if os.path.exists(temp_filename):
-                    os.remove(temp_filename)
+                    try:
+                        os.remove(temp_filename)
+                    except:
+                        pass
                     
             except Exception as e:
                 print(f"[AudioListener] Error: {e}")

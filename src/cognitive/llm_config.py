@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 from pathlib import Path
-env_path = Path(__file__).parent.parent / '.env'
+env_path = Path(__file__).parent.parent.parent / '.env'
 print(f"DEBUG: Loading .env from {env_path}")
 load_dotenv(dotenv_path=env_path)
 
