@@ -1,11 +1,6 @@
 # 🧊 GlassBox: The AI-Powered Recruitment Protocol
 > "Don’t judge the code. Judge the coder."
 
-![License: MIT](https://opensource.org/licenses/MIT)
-![Python 3.9+](https://www.python.org/downloads/)
-![Streamlit](https://streamlit.io)
-![OpenAI](https://openai.com/)
-
 ---
 
 ## 🚨 The Problem: The "Black Box" of Hiring
@@ -23,17 +18,17 @@ GlassBox is an automated exam environment that makes the candidate's thinking pr
 
 GlassBox replaces the "silent test task" with a transparent session:
 
-1.  🎙️ Vocal Coding: The candidate solves the task while "thinking aloud." [cite_start]The Cognitive Engine analyzes their speech for logic, clarity, and terminology[cite: 87, 88].
-2.  👁️ Work Patterns (Sensors): We track the active environment. [cite_start]Is the candidate coding in the IDE or researching in the Browser?[cite: 116, 120].
+1.  🎙️ Vocal Coding: The candidate solves the task while "thinking aloud." The Cognitive Engine analyzes their speech for logic, clarity, and terminology.
+2.  👁️ Work Patterns (Sensors): We track the active environment. Is the candidate coding in the IDE or researching in the Browser?.
 3.  🧠 AI Cross-Check: The system correlates Speech (Plan) vs Action (Code). 
     * *Example:* Candidate says "I'll fix the loop" -> Candidate actually edits the loop -> High Consistency Score.
-4.  🔒 Proof of Skill: The session is hashed (SHA-256). [cite_start]A PDF Certificate is generated, guaranteeing the result cannot be faked[cite: 179, 185].
+4.  🔒 Proof of Skill: The session is hashed (SHA-256). A PDF Certificate is generated, guaranteeing the result cannot be faked.
 
 ---
 
 ## 📊 The Dashboard (What Recruiters See)
 
-No more watching 1-hour videos. [cite_start]The recruiter gets a **Smart Dashboard**[cite: 149]:
+No more watching 1-hour videos. The recruiter gets a **Smart Dashboard**
 
 ### 1. The Timeline (X-Ray Vision)
 A visual bar showing the exact flow of the session:
@@ -47,9 +42,6 @@ A visual bar showing the exact flow of the session:
 | 🧠 Clarity Score | Coherence, terminology, and completeness of the explanation. | LLM Analysis |
 | 🛠️ Hard Score | Balance between independent coding and external research. | Window Sensor |
 | ⚖️ Verdict | Math-based PASS / FAIL recommendation. | Aggregated Data |
-
-### 3. Smart Playback (Drill-Down)
-Click on any anomaly in the timeline to instantly watch that specific moment in the video recording. Context is just one click away.
 
 ---
 
@@ -68,13 +60,13 @@ Click on any anomaly in the timeline to instantly watch that specific moment in 
 
 ## 🛠️ Architecture & Tech Stack
 
-[cite_start]The project is built by a cross-functional team, delivering a complete MVP in 24 hours[cite: 228].
+The project is built by a cross-functional team, delivering a complete MVP in 24 hours.
 
-* [cite_start]**👤 Role 1 (Core):** Orchestrator, JSON Schema Contract, SessionLogger. [cite: 58]
-* [cite_start]**👤 Role 2 (AI):** Cognitive Engine (LLM Integration), Clarity Analysis. [cite: 87]
-* [cite_start]**👤 Role 3 (Sensors):** Active Window Monitoring, Threading, Pattern Recognition. [cite: 116]
-* [cite_start]**👤 Role 4 (UI):** Streamlit Dashboard, Plotly Visualization. [cite: 149]
-* [cite_start]**👤 Role 5 (Product):** PDF Generation, SHA-256 Hashing, Business Logic. [cite: 179]
+*👤 Role 1 (Core):** Orchestrator, JSON Schema Contract, SessionLogger. 
+*👤 Role 2 (AI):** Cognitive Engine (LLM Integration), Clarity Analysis.
+*👤 Role 3 (Sensors):** Active Window Monitoring, Threading, Pattern Recognition. 
+*👤 Role 4 (UI):** Streamlit Dashboard, Plotly Visualization.
+*👤 Role 5 (Product):** PDF Generation, Hashing, Business Logic.
 
 ---
 
@@ -82,6 +74,7 @@ Click on any anomaly in the timeline to instantly watch that specific moment in 
 
 ### Prerequisites
 * Python 3.9+
-* OpenAI API Key (optional for FakeLLM mode)
+* OpenAI API Key
 
 ###
+
