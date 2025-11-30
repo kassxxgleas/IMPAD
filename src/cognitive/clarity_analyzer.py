@@ -225,19 +225,69 @@ class ClarityAnalyzer:
         except (ValueError, TypeError) as e:
             return self._error_response(f"Invalid score format: {str(e)}")
     
-    def _error_response(self, error_msg: str) -> Dict[str, Any]:
-        """
-        Return a standard error response.
-        
-        Args:
-            error_msg: Error message
-        
-        Returns:
-            dict: Error response
-        """
         return {
             "coherence": 0,
             "terminology": 0,
             "completeness": 0,
             "comment": f"Error: {error_msg}"
         }
+
+    def analyze_code(self, code: str) -> int:
+        """
+        Analyze code quality.
+        
+        Args:
+            code: Candidate's code submission
+        
+        Returns:
+            int: Code quality score (0-100)
+        """
+        if not code or len(code.strip()) < 5:
+            return 0
+            
+        if self.mode == "fake":
+            return self.llm.analyze_code(code)
+        else:
+            return self._analyze_code_with_openai(code)
+
+    def _analyze_code_with_openai(self, code: str, retry_count: int = 0) -> int:
+        """
+        Analyze code using OpenAI API.
+        """
+        try:
+            response = requests.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": self.model,
+                    "temperature": self.temperature,
+                    "messages": [
+                        {"role": "system", "content": "You are a senior software engineer. Evaluate the following code for correctness, efficiency, and style. Return ONLY a JSON object with a single field 'score' (integer 0-100)."},
+                        {"role": "user", "content": f"Code to evaluate:\n\n{code}"}
+                    ]
+                },
+                timeout=TIMEOUT_SECONDS
+            )
+            
+            response.raise_for_status()
+            data = response.json()
+            
+            if "choices" not in data or len(data["choices"]) == 0:
+                return 0
+                
+            content = data["choices"][0]["message"]["content"]
+            
+            # Extract JSON
+            result = self._extract_json(content)
+            if result and "score" in result:
+                return max(0, min(100, int(result["score"])))
+            
+            return 0
+            
+        except Exception as e:
+            if DEBUG:
+                print(f"[DEBUG] Code analysis failed: {e}")
+            return 0
