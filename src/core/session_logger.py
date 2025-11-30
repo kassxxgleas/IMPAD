@@ -1,4 +1,5 @@
 import json
+import os
 import time
 import threading
 import uuid
@@ -30,7 +31,8 @@ class SessionData:
 class SessionLogger:
     def __init__(self, candidate_id: str):
         self.lock = threading.Lock()  # Crucial for multithreading
-        self.filepath = "session_log.json"
+        self.filepath = os.path.join("data", "session_log.json")
+        os.makedirs("data", exist_ok=True)
         self.data = SessionData(
             session_id=str(uuid.uuid4()),
             candidate_id=candidate_id,

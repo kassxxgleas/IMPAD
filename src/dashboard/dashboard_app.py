@@ -11,6 +11,7 @@ The app shows:
 """
 
 import json
+import os
 from typing import List, Dict, Any
 
 import pandas as pd
@@ -394,6 +395,8 @@ def init_session_state():
         st.session_state.user = None
     if "active_challenge" not in st.session_state:
         st.session_state.active_challenge = False
+    if "view_mode" not in st.session_state:
+        st.session_state.view_mode = "DASHBOARD" # DASHBOARD or RESULTS
 
 def render_sidebar_account():
     with st.sidebar:
@@ -483,13 +486,35 @@ def login_user(username, password):
                 with open(filename, "w") as f:
                     f.write(code_input)
                 
-                st.success(f"Solution saved to {filename}!")
-                st.balloons()
+                # Signal backend to stop
+                with open("STOP_SESSION", "w") as f:
+                    f.write("STOP")
                 
-                # Stop the backend session (optional, but good for cleanup)
-                # For now, we just mark the challenge as done in UI if needed
-                # st.session_state.active_challenge = False
-                # st.rerun()
+                st.success(f"Solution saved to {filename}!")
+                st.info("Stopping session and generating report... (this may take up to 30 seconds)")
+                
+                # Poll for completion (max 30 seconds)
+                import time
+                max_retries = 30
+                for i in range(max_retries):
+                    time.sleep(1)
+                    try:
+                        with open(os.path.join("data", "session_log.json"), "r") as f:
+                            data = json.load(f)
+                        
+                        # Check if session ended AND has final analysis
+                        if data.get("ended_at") is not None:
+                            # Also verify FINAL_ANALYSIS exists
+                            has_final = any(e.get("type") == "FINAL_ANALYSIS" for e in data.get("events", []))
+                            if has_final:
+                                break
+                    except:
+                        pass
+                
+                # Update state to show results
+                st.session_state.active_challenge = False
+                st.session_state.view_mode = "RESULTS"
+                st.rerun()
 
         else:
             col1, col2 = st.columns([1, 3])
@@ -507,23 +532,35 @@ def login_user(username, password):
                         st.error("Please login first!")
                     else:
                         try:
-                            # Launch main_role.py SILENTLY
+                            # Clean up old session
+                            # 1. Signal any running processes to stop
+                            with open("STOP_SESSION", "w") as f:
+                                f.write("STOP")
+                            
+                            # 2. Wait for old process to finish
+                            import time
+                            time.sleep(2)
+                            
+                            # 3. Delete old session log
+                            log_path = os.path.join("data", "session_log.json")
+                            if os.path.exists(log_path):
+                                os.remove(log_path)
+                            
+                            # 4. Remove stop signal
+                            if os.path.exists("STOP_SESSION"):
+                                os.remove("STOP_SESSION")
+                            
+                            # Launch src/main.py in VISIBLE mode for debugging
                             if sys.platform == "win32":
-                                # CREATE_NO_WINDOW = 0x08000000
                                 subprocess.Popen(
-                                    ["python", "main_role.py"], 
-                                    creationflags=0x08000000,
+                                    "start cmd /k python src/main.py", 
                                     shell=True
                                 )
                             else:
-                                # Fallback for non-windows
-                                subprocess.Popen(
-                                    ["python", "main_role.py"],
-                                    stdout=subprocess.DEVNULL,
-                                    stderr=subprocess.DEVNULL
-                                )
+                                subprocess.Popen(["python", "src/main.py"])
                             
                             st.session_state.active_challenge = True
+                            st.session_state.view_mode = "CHALLENGE"
                             st.rerun()
                             
                         except Exception as e:
@@ -535,13 +572,68 @@ def login_user(username, password):
                 else:
                     st.caption("Session is running.")
 
+def render_results_view():
+    """
+    Render the final results after submission.
+    """
+    st.balloons()
+    st.title("🎉 Challenge Completed!")
+    
+    # Load latest session log
+    try:
+        with open(os.path.join("data", "session_log.json"), "r") as f:
+            data = json.load(f)
+            
+        user = st.session_state.user
+        candidate_name = user['name'] if user else data.get("candidate_id", "Unknown")
+        
+        # Calculate duration
+        start_time = data.get("started_at", 0)
+        end_time = data.get("ended_at", 0)
+        duration = 0
+        if start_time and end_time:
+            duration = end_time - start_time
+        
+        # Find Final Analysis
+        final_transcript = "No transcript available."
+        final_comment = "No analysis available."
+        
+        for event in data.get("events", []):
+            if event["type"] == "FINAL_ANALYSIS":
+                payload = event["payload"]
+                final_transcript = payload.get("transcript", "No transcript found.")
+                final_comment = payload.get("comment", "No comment found.")
+        
+        # Display Results
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Candidate", candidate_name)
+        col2.metric("Time Taken", f"{duration:.1f}s")
+        col3.metric("Verdict", data["summary"].get("verdict", "PENDING"))
+        
+        st.divider()
+        
+        st.subheader("🗣️ Final Audio Transcript")
+        st.info(f"\"{final_transcript}\"")
+        
+        st.subheader("🤖 AI Analysis")
+        st.success(f"**Feedback:** {final_comment}")
+        
+        st.divider()
+        
+        if st.button("🔙 Back to Dashboard"):
+            st.session_state.view_mode = "DASHBOARD"
+            st.rerun()
+            
+    except Exception as e:
+        st.error(f"Could not load results: {e}")
+
 def render_audit_tab():
     """
     Render the Live Audit tab (existing dashboard logic).
     """
     # 1) Load session data
     try:
-        session_data = load_session_log("session_log.json")
+        session_data = load_session_log(os.path.join("data", "session_log.json"))
     except FileNotFoundError:
         st.warning("Waiting for session data... (Start a challenge first)")
         return
@@ -581,6 +673,11 @@ def main() -> None:
     
     # Initialize session state
     init_session_state()
+
+    # Check View Mode
+    if st.session_state.view_mode == "RESULTS":
+        render_results_view()
+        return
 
     st.title("GlassBox Candidate Session Dashboard")
     

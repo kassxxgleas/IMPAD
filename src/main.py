@@ -1,10 +1,17 @@
 import threading
 import time
 import random
-from SessionLogger import SessionLogger
-from sensor import ActiveWindowMonitor
-from audio_listener import AudioListener
-from cognitive_engine.clarity_analyzer import ClarityAnalyzer
+import os
+import sys
+
+# Add project root to sys.path to allow imports from src
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+
+from src.core.session_logger import SessionLogger
+from src.sensors.active_window_monitor import ActiveWindowMonitor
+from src.sensors.audio_listener import AudioListener
+from src.cognitive.clarity_analyzer import ClarityAnalyzer
 
 def main():
     print("Starting GlassBox Session...")
@@ -35,6 +42,15 @@ def main():
 
     try:
         while True:
+            # Check for stop signal
+            if os.path.exists("STOP_SESSION"):
+                print("Stop signal received. Ending session...")
+                try:
+                    os.remove("STOP_SESSION")
+                except:
+                    pass
+                break
+                
             # Main thread just waits, audio is processed in background thread
             time.sleep(1)
             
@@ -47,7 +63,7 @@ def main():
         t.join(timeout=1)
         
         # Save full audio
-        listener.save_recording("session_audio.wav")
+        listener.save_recording(os.path.join("data", "session_audio.wav"))
         
         # Final Analysis
         full_text = listener.get_full_transcript()
@@ -55,6 +71,8 @@ def main():
             print("\n[Final Analysis] Analyzing full session...")
             try:
                 final_analysis = analyzer.analyze(full_text)
+                # Add full transcript to payload
+                final_analysis["transcript"] = full_text
                 real_logger.log_event("FINAL_ANALYSIS", final_analysis)
                 print(f"Final Verdict: {final_analysis.get('comment', 'No comment')}")
             except Exception as e:

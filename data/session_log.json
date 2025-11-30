@@ -1,0 +1,58 @@
+{
+  "session_id": "fae98a3a-83db-48fd-839e-9fac7ad5658c",
+  "candidate_id": "hacker_007",
+  "started_at": 1764461074.3419766,
+  "events": [
+    {
+      "ts": 0.0,
+      "type": "STATE",
+      "payload": {
+        "state": "CODING"
+      }
+    },
+    {
+      "ts": 7.61,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Some attempt to communicate, but lacks any technical content. Improvement needed in using relevant technical terms."
+      }
+    },
+    {
+      "ts": 21.36,
+      "type": "CLARITY",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Shows an attempt to seek assistance, but lacks technical details and problem-solving approach."
+      }
+    },
+    {
+      "ts": 27.01,
+      "type": "STATE",
+      "payload": {
+        "state": "RESEARCHING"
+      }
+    },
+    {
+      "ts": 31.31,
+      "type": "FINAL_ANALYSIS",
+      "payload": {
+        "coherence": 10,
+        "terminology": 0,
+        "completeness": 0,
+        "comment": "Some attempt to communicate but lacks coherence and technical content. The explanation is extremely unclear and lacks any technical vocabulary. The speaker needs to focus on structuring their thoughts and using relevant technical terms.",
+        "transcript": "I am the best quarter help me please my friend"
+      }
+    }
+  ],
+  "ended_at": 1764461105.6545966,
+  "summary": {
+    "hard_score": 80,
+    "soft_score": 0,
+    "verdict": "PASS"
+  }
+}
